@@ -10,9 +10,8 @@ function run_all
     
 %   model80211p(beta,lambda,Pt,B,Rd);
     
-
-    beta = [0.1: 0.1: 1.0];
-
+    beta = [0.01: 0.005: 0.1];
+    
     %{
     for i=1:length(beta)
         fprintf('  beta   = %f veh/m \n', beta);
@@ -25,7 +24,14 @@ function run_all
         model80211p(beta(i),10,23,190,6e6)
     end
     %}
-    model80211p(0.1,10,23,190,6e6)
+
+    %model80211p(0.06,10,23,190,6e6);
+    
+    
+    for i=1:length(beta)
+        model80211p(beta(i),10,23,190,6e6);
+    end
+    
     %{
     model80211p(0.06,10,23,190,18e6); 
     model80211p(0.06,10,23,190,27e6); 
